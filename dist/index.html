@@ -12,9 +12,30 @@
         <h1>Overlook Hotel</h1>
       </header>
       <section class = "booking-block">
-        <h2>BOOK YOUR STAY</h2>
-        <form id = 'find-rooms-form'>
-          <label>Month</label>
+        <div class = 'bed'>
+          <div class = 'pillow-section'>
+            <div class = 'pillow'><div></div></div>
+            <div class = 'pillow'><div></div></div>
+          </div>
+          <div class = 'blanket-fold'></div>
+          <div class = 'blanket'>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease-end'></div>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease'></div>
+            <div class = 'blanket-crease'></div>
+          </div>
+        </div>
+        <form class='rooms-form' id = 'find-rooms-form'>
+          <h2>BOOK YOUR STAY</h2>
+          <label for = 'js-months'>Month</label>
           <select id = 'js-months'>
             <option value = 31>January</option>
             <option value = 28>February</option>
@@ -29,18 +50,29 @@
             <option value = 30>November</option>
             <option value = 31>December</option>
           </select>
-          <label>Day</labe>
+          <label for = 'js-days'>Day</label>
           <select id = 'js-days'></select>
-          <label>Year</label>
+          <label for = 'js-years'>Year</label>
           <select id = 'js-years'></select>
           <button type = 'submit'>Find a room</button>
+          <p class = 'error hidden' id = 'rooms-form-error'>Please enter a valid date</p>
         </form>
-        <p class = 'hidden' id = 'rooms-form-error'>Please enter a valid date</p>
 
       </section>
     </main>
     <aside>
-
+      <h3 class = 'username hidden'>Welcome back, USERNAME</h3>
+      <button class = 'sign-in-btn' id = 'js-sign-in-btn'>
+        <div class = 'lightswitch-log-in'>
+          <h3>Sign in:</h3>
+          <input type = 'text' placeholder = 'username'/>
+          <input type = 'text' placeholder = 'password'/>
+        </div>
+        <div class = 'lightswitch'>
+          <div class = 'lightswitch-center'></div>
+          <div class = 'lightswitch-switch-no-user'><p>sign in:</p></div>
+        </div>
+      </button>
     </aside>
     <script src = "bundle.js"></script>
   </body>
