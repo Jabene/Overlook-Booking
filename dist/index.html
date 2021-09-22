@@ -1,16 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <head>
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlook Booking</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Overlook Hotel</h1>
+      </header>
+      <section class = "booking-block">
+        <h2>BOOK YOUR STAY</h2>
+        <form id = 'find-rooms-form'>
+          <label>Month</label>
+          <select id = 'js-months'>
+            <option value = 31>January</option>
+            <option value = 28>February</option>
+            <option value = 31>March</option>
+            <option value = 30>April</option>
+            <option value = 31>May</option>
+            <option value = 30>June</option>
+            <option value = 31>July</option>
+            <option value = 31>August</option>
+            <option value = 30>September</option>
+            <option value = 31>October</option>
+            <option value = 30>November</option>
+            <option value = 31>December</option>
+          </select>
+          <label>Day</labe>
+          <select id = 'js-days'></select>
+          <label>Year</label>
+          <select id = 'js-years'></select>
+          <button type = 'submit'>Find a room</button>
+        </form>
+        <p class = 'hidden' id = 'rooms-form-error'>Please enter a valid date</p>
 
-</body>
+      </section>
+    </main>
+    <aside>
+
+    </aside>
+    <script src = "bundle.js"></script>
+  </body>
 </html>
