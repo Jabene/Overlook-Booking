@@ -1,9 +1,9 @@
 export class ApiData {
   constructor(){
-    this.customers = [];
-    this.customer = {};
-    this.bookings = [];
-    this.rooms = [];
+    this.customers = null;
+    this.customer = null;
+    this.bookings = null;
+    this.rooms = null;
   }
 
   getCustomerData() {

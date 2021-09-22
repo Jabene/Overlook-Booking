@@ -21,7 +21,7 @@ function loadApiData() {
   apiData.getCustomerData();
   apiData.getBookingData();
   apiData.getRoomsData();
-  domUpdates.updateDate(monthsSelector)
+  domUpdates.updateDate()
 }
 
 function findAvailableRooms() {
@@ -34,14 +34,14 @@ function validateDateInput() {
   const daysSelector = document.getElementById('js-days')
   const yearsSelector = document.getElementById('js-years')
   const error = document.getElementById('rooms-form-error')
-  if (yearsSelector.value != date.getFullYear()) {
+  if (parseInt(yearsSelector.value) !== date.getFullYear()) {
     domUpdates.hide(error)
     return findAvailableRooms()
   }
   if(
     (monthsSelector.selectedIndex < date.getMonth())
       ||
-        (monthsSelector.selectedIndex == date.getMonth()
+        (monthsSelector.selectedIndex === date.getMonth()
           &&
         daysSelector.selectedIndex < date.getDate())
     ) {
