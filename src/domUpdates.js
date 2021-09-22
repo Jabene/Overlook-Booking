@@ -14,17 +14,17 @@ export let domUpdates = {
     const daysSelector = document.getElementById('js-days')
     daysSelector.innerHTML = ''
     for ( let i = 0; i < days; i++) {
-      daysSelector.innerHTML += `<option>${i+1}</option>`
+      daysSelector.innerHTML += `<option>${i + 1}</option>`
     }
     if (!userChangedMonth) {
-       return daysSelector.selectedIndex = date.getDate()
+      return daysSelector.selectedIndex = date.getDate()
     }
     daysSelector.selectedIndex = 0
   },
 
   updateYear(currentYear) {
     const yearsSelector = document.getElementById('js-years')
-    for( let i = 0; i<4; i++) {
+    for ( let i = 0; i < 4; i++) {
       const year = currentYear + i
       yearsSelector.innerHTML += `<option value = '${year}'>${year}</option>`
     }
@@ -37,5 +37,5 @@ export let domUpdates = {
   show(...elements) {
     elements.forEach(elm => elm.classList.remove('hidden'))
   },
-  
+
 }

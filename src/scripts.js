@@ -1,7 +1,6 @@
 import './css/base.scss';
 import './css/bed.scss';
 import './css/lightswitch.scss'
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import {domUpdates} from './domUpdates'
 import {ApiData} from './classes/ApiData'
@@ -38,13 +37,13 @@ function validateDateInput() {
     domUpdates.hide(error)
     return findAvailableRooms()
   }
-  if(
+  if (
     (monthsSelector.selectedIndex < date.getMonth())
       ||
         (monthsSelector.selectedIndex === date.getMonth()
           &&
         daysSelector.selectedIndex < date.getDate())
-    ) {
+  ) {
     return error.classList.remove('hidden');
   }
   domUpdates.hide(error)
