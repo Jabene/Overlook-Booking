@@ -17,7 +17,32 @@
             <div class = "pillow"><div></div></div>
             <div class = "pillow"><div></div></div>
           </div>
-          <div class="blanket-fold"></div>
+          <div class="blanket-fold">
+            <form class="rooms-form" id="find-rooms-form">
+              <h2>BOOK YOUR STAY</h2>
+              <label for="js-months">Month</label>
+              <select id="js-months">
+                <option value=31>January</option>
+                <option value=28>February</option>
+                <option value=31>March</option>
+                <option value=30>April</option>
+                <option value=31>May</option>
+                <option value=30>June</option>
+                <option value=31>July</option>
+                <option value=31>August</option>
+                <option value=30>September</option>
+                <option value=31>October</option>
+                <option value=30>November</option>
+                <option value=31>December</option>
+              </select>
+              <label for="js-days">Day</label>
+              <select id="js-days"></select>
+              <label for="js-years">Year</label>
+              <select id="js-years"></select>
+              <button type="submit">Find a room</button>
+              <p class="error hidden" id="rooms-form-error">Please enter a valid date</p>
+            </form>
+          </div>
           <div class="blanket">
             <div class = "blanket-crease"></div>
             <div class = "blanket-crease"></div>
@@ -33,46 +58,24 @@
             <div class = "blanket-crease"></div>
           </div>
         </div>
-        <form class="rooms-form" id="find-rooms-form">
-          <h2>BOOK YOUR STAY</h2>
-          <label for="js-months">Month</label>
-          <select id="js-months">
-            <option value=31>January</option>
-            <option value=28>February</option>
-            <option value=31>March</option>
-            <option value=30>April</option>
-            <option value=31>May</option>
-            <option value=30>June</option>
-            <option value=31>July</option>
-            <option value=31>August</option>
-            <option value=30>September</option>
-            <option value=31>October</option>
-            <option value=30>November</option>
-            <option value=31>December</option>
-          </select>
-          <label for="js-days">Day</label>
-          <select id="js-days"></select>
-          <label for="js-years">Year</label>
-          <select id="js-years"></select>
-          <button type="submit">Find a room</button>
-          <p class="error hidden" id="rooms-form-error">Please enter a valid date</p>
-        </form>
-
       </section>
     </main>
     <aside>
       <h3 class="username hidden">Welcome back, USERNAME</h3>
-      <button class="sign-in-btn" id="js-sign-in-btn">
-        <div class="lightswitch-log-in">
+      <div class="sign-in-switch" id="js-sign-in-btn">
+        <form class="lightswitch-log-in" id="js-log-in-form">
           <h3>Sign in:</h3>
-          <input type="text" placeholder="username"/>
-          <input type="text" placeholder="password"/>
-        </div>
+          <input class="sign-in-inputs" type="text"
+            placeholder="username" id="js-log-in-username"/>
+          <input class="sign-in-inputs" type="text"
+            placeholder="password" id="js-log-in-password"/>
+            <button>submit</button>
+        </form>
         <div class="lightswitch">
           <div class="lightswitch-center"></div>
-          <div class="lightswitch-switch-no-user"><p>sign in:</p></div>
+          <div class="lightswitch-switch-no-user"></div>
         </div>
-      </button>
+      </div>
     </aside>
     <script src="bundle.js"></script>
   </body>

@@ -17,7 +17,7 @@ findRoomsForm.addEventListener('submit', validateDateInput)
 
 function loadApiData() {
   apiData = new ApiData();
-  apiData.getCustomerData();
+  apiData.getCustomersData();
   apiData.getBookingData();
   apiData.getRoomsData();
   domUpdates.updateDate()
