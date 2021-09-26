@@ -36,6 +36,25 @@ export class ApiData {
     );
   }
 
+  postBooking(userID, date, roomNumber) {
+    return fetch('http://localhost:3001/api/v1/bookings',{
+      method: 'POST',
+      body: JSON.stringify({
+        userID: userID,
+        date: date,
+        roomNumber: roomNumber
+      }),
+      headers: {"Content-Type": "application/json"},
+    })
+    .then( response => {
+        return response.json()
+    })
+    .then( resp => {
+      this.bookings.push(resp.newBooking)
+      console.log(resp)
+    });
+  }
+
   getUsernames() {
     this.customers = this.customers.map(customer => {
       return {

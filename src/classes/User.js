@@ -4,5 +4,6 @@ export class User {
     this.name = userData.name;
     this.userName = userData.username
     this.bookings = null;
+    this.selectedDate = null;
   }
 }

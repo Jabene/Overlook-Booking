@@ -12,9 +12,11 @@
         <h1>Overlook Hotel</h1>
       </header>
       <section class="booking-block" id="js-booking-block">
-        <h2 class="hidden">Available Rooms</h2>
+        <h2 class="hidden" id="js-body-heading"></h2>
+        <p class="hidden" id="js-user-total-spent"></p>
           <div class="past-bookings-container hidden"
-              id="js-booking-cards-container"></div>
+              id="js-booking-cards-container">
+          </div>
           <form class="rooms-form hidden" id="find-rooms-form">
             <h2>BOOK YOUR STAY</h2>
             <label for="js-months">Month</label>
@@ -41,14 +43,19 @@
           </form>
           <section class="vacant-room-page hidden" id="js-vacant-room-info">
             <img src="./images/single-king-room.png" class="vacant-room-img"></img>
-            <div class="vacant-room-info"></div>
-            <div src="./images/reception-background.png" class="vacant-room-page-btns"></div>
+            <div class="vacant-room-btns">
+              <h2 id="js-room-info-heading"></h2>
+              <div>
+                <button class="hidden" id="js-book-room-btn">Book this room</button>
+                <button id="js-go-back-btn">Go Back</button>
+              </div>
+            </div>
+            <div class="vacant-room-page-info" id="js-vacant-room-details"></div>
           </section>
       </section>
     </main>
     <aside>
       <h3 class="username hidden" id="username"></h3>
-      <p id="js-user-total-spent"></p>
       <button class="past-bookings-btn hidden"
               id="js-past-bookings-btn">View previous bookings</button>
       <button class="make-new-booking-btn hidden"

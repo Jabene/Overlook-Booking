@@ -4,6 +4,7 @@ import './images/single-king-room.png'
 import {domUpdates} from './domUpdates'
 import {ApiData} from './classes/ApiData'
 import {User} from './classes/User'
+import dayjs from 'dayjs'
 
 const monthsSelector = document.getElementById('js-months');
 const daysSelector = document.getElementById('js-days')
@@ -13,6 +14,8 @@ const logInForm = document.getElementById('js-log-in-form');
 const pastBookingsBtn = document.getElementById('js-past-bookings-btn');
 const newBookingBtn = document.getElementById('js-make-new-booking-btn');
 const cardsContainer = document.getElementById('js-booking-cards-container')
+const goBackBtn = document.getElementById('js-go-back-btn')
+const makeBookingBtn = document.getElementById('js-book-room-btn')
 
 let apiData;
 let user;
@@ -24,10 +27,17 @@ monthsSelector.addEventListener('change', function () {
 findRoomsForm.addEventListener('submit', validateDateInput)
 logInForm.addEventListener('submit', validateLogInInput)
 pastBookingsBtn.addEventListener('click', displayPastBookings)
-newBookingBtn.addEventListener('click', makeNewBooking)
+newBookingBtn.addEventListener('click', showBookingForm)
 cardsContainer.addEventListener('click', verifyCardWasClicked)
+goBackBtn.addEventListener('click', goBackToResults)
+makeBookingBtn.addEventListener('click', bookRoom)
 
 function loadApiData() {
+  // if(localStorage.user) {
+  //   user = new User(JSON.parse(localStorage.getItem('user')));
+  //   retrievePreviousBookings()
+  //   domUpdates.displayUserInfo(user)
+  // }
   apiData = new ApiData();
   apiData.getCustomersData();
   apiData.getBookingData();
@@ -42,9 +52,9 @@ function findAvailableRooms() {
   if (month < 10){
     month = "0"+month
   }
-  const selectedDate = `${year}/${month}/${day}`
+  user.selectedDate = `${year}/${month}/${day}`
   let bookedRooms = apiData.bookings.filter(booking => {
-    return booking.date === selectedDate
+    return booking.date === user.selectedDate
   })
   bookedRooms = bookedRooms.map(booking => {
     return booking.roomNumber
@@ -97,18 +107,22 @@ function retrievePreviousBookings() {
     return booking.userID === user.id
   })
   user.bookings = previousBookings
+  domUpdates.displayUserInfo(user)
 }
 
 function displayPastBookings(event) {
   event.preventDefault()
+  retrievePreviousBookings()
   domUpdates.displayPastBookings(user.bookings)
-
 }
 
-function makeNewBooking(event) {
+function showBookingForm(event) {
   event.preventDefault()
   domUpdates.show(findRoomsForm)
-  domUpdates.hide(document.getElementById('js-booking-cards-container'))
+  domUpdates.hide(document.getElementById('js-booking-cards-container'),
+    document.getElementById('js-vacant-room-info'),
+    document.getElementById('js-body-heading'),
+    document.getElementById('js-user-total-spent'))
 }
 
 function verifyCardWasClicked(event) {
@@ -116,5 +130,16 @@ function verifyCardWasClicked(event) {
   if (event.target.id === 'js-booking-cards-container') {
     return
   }
+  const roomArticle = event.target.closest('article')
+  domUpdates.displayRoomInformation(roomArticle, apiData)
+}
 
+function goBackToResults() {
+  domUpdates.hide(document.getElementById('js-vacant-room-info'))
+  domUpdates.show(document.getElementById('js-booking-cards-container'))
+}
+
+function bookRoom() {
+  const roomNumber = document.getElementById('js-room-info-heading').innerText.substring(5)
+  apiData.postBooking(user.id, user.selectedDate, parseInt(roomNumber))
 }
