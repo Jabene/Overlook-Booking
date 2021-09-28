@@ -49,6 +49,7 @@ function findAvailableRooms() {
   const day = daysSelector.value
   const year = yearsSelector.value
   let month = monthsSelector.selectedIndex + 1
+  const roomType = document.getElementById('js-roomType').value
   if (month < 10){
     month = "0"+month
   }
@@ -59,7 +60,7 @@ function findAvailableRooms() {
   bookedRooms = bookedRooms.map(booking => {
     return booking.roomNumber
   })
-  domUpdates.displayAvailableRooms(bookedRooms, apiData.rooms)
+  domUpdates.displayAvailableRooms(bookedRooms, apiData.rooms, roomType)
 }
 
 function validateDateInput(event) {
@@ -71,11 +72,9 @@ function validateDateInput(event) {
     return findAvailableRooms()
   }
   if (
-    (monthsSelector.selectedIndex < date.getMonth())
-      ||
-        (monthsSelector.selectedIndex === date.getMonth()
-          &&
-        daysSelector.selectedIndex < date.getDate())
+    (monthsSelector.selectedIndex < date.getMonth()) ||
+      (monthsSelector.selectedIndex === date.getMonth() &&
+      daysSelector.selectedIndex < date.getDate())
   ) {
     return error.classList.remove('hidden');
   }

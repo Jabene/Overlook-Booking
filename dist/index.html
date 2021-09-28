@@ -19,25 +19,37 @@
           </div>
           <form class="rooms-form hidden" id="find-rooms-form">
             <h2>BOOK YOUR STAY</h2>
-            <label for="js-months">Month</label>
-            <select id="js-months">
-              <option value=31>January</option>
-              <option value=28>February</option>
-              <option value=31>March</option>
-              <option value=30>April</option>
-              <option value=31>May</option>
-              <option value=30>June</option>
-              <option value=31>July</option>
-              <option value=31>August</option>
-              <option value=30>September</option>
-              <option value=31>October</option>
-              <option value=30>November</option>
-              <option value=31>December</option>
-            </select>
-            <label for="js-days">Day</label>
-            <select id="js-days"></select>
-            <label for="js-years">Year</label>
-            <select id="js-years"></select>
+            <label for="js-months">Month:
+              <select id="js-months">
+                <option value=31>January</option>
+                <option value=28>February</option>
+                <option value=31>March</option>
+                <option value=30>April</option>
+                <option value=31>May</option>
+                <option value=30>June</option>
+                <option value=31>July</option>
+                <option value=31>August</option>
+                <option value=30>September</option>
+                <option value=31>October</option>
+                <option value=30>November</option>
+                <option value=31>December</option>
+              </select>
+            </label>
+            <label for="js-days">Day:
+              <select id="js-days"></select>
+            </label>
+            <label for="js-years">Year:
+              <select id="js-years"></select>
+            </label>
+            <label for="js-roomType">Room Type:
+              <select id="js-roomType">
+                <option>Any</option>
+                <option>suite</option>
+                <option>junior suite</option>
+                <option>residential suite</option>
+                <option>single room</option>
+              </select>
+            </label>
             <button type="submit">Find a room</button>
             <p class="error hidden" id="rooms-form-error">Please enter a valid date</p>
           </form>

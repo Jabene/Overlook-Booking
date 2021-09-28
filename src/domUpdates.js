@@ -70,7 +70,7 @@ export let domUpdates = {
     })
   },
 
-  displayAvailableRooms(bookedRooms, allRooms) {
+  displayAvailableRooms(bookedRooms, allRooms, roomType) {
     const pastBookingsBlock = document.getElementById('js-booking-cards-container')
     const heading = document.getElementById('js-body-heading')
     heading.innerText = 'Available Rooms'
@@ -79,12 +79,16 @@ export let domUpdates = {
       document.getElementById('js-vacant-room-info'),
       document.getElementById('js-user-total-spent'))
     pastBookingsBlock.innerHTML = ""
-    if (bookedRooms.length === 25) {
-      console.log('pp')
+    if (bookedRooms.length >= 25) {
       pastBookingsBlock.innerHTML = `
       <p>Sorry, there are no rooms available on this date</p>
       `
       return
+    }
+    if (roomType !== "Any") {
+      allRooms = allRooms.filter(room => {
+        return room.roomType === roomType
+      })
     }
     allRooms.forEach(room => {
       if(!bookedRooms.includes(room.number)) {
