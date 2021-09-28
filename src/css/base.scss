@@ -3,7 +3,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  margin: 0px;
+  margin: 0;
   display: flex;
   flex-direction: row;
 }
@@ -13,56 +13,113 @@ main{
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   background-color: #595959;
 }
 
 header {
   width: 100%;
-  height: 20%;
+  height: 10%;
   display: flex;
-  align-items: flex-end;
   h1{
     width: 100%;
     height: 20%;
-    margin: 0vh 0vw 3vh 2vw;
+    margin: 0vh 0vw 0vh 2vw;
     color: #f2f2f2;
-    font-size: 4vw;
+    font-size: 3vw;
   }
 }
 
 .booking-block {
-  width: 60%;
-  height: 75%;
-  margin: 5vh 0vw 10vh 0vw;
+  width: 100%;
+  height: 100%;
   border: solid white 2px;
-  border-radius: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  background-color: #dbd3c9;
-  box-shadow: 5px 7px;
-
+  background-image: url('../images/reception-background.png');
+  background-size: cover;
 }
 
+.past-bookings-container {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow-y: scroll;
+  justify-content: space-around;
+}
+
+.past-booking {
+  width: 20%;
+  height: 25%;
+  border: solid black 2px;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  opacity: 0.9;
+  cursor: pointer;
+  p {
+    margin: 0;
+  }
+  h3 {
+    margin: 0;
+  }
+}
 
 .rooms-form {
-  width: 50%;
-  height: 30%;
+  width: 15%;
+  height: 80%;
+  margin: 0% 10% 0% 0%;
+  border: solid white 2px;
+  border-radius: 5px;
   display: flex;
-  margin-bottom: 6vh;
+  align-self: flex-end;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  z-index: 9;
+  opacity: 0.9;
+  background-color: grey;
 }
 
 .error {
   color: red;
 }
+
+.vacant-room-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.vacant-room-img {
+  width: 50%;
+  height: 50%;
+}
+
+.vacant-room-btns {
+  width: 50%;
+  height: 50%;
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #595959;
+}
+
+.vacant-room-page-info {
+  width: 100%;
+  height: 50%;
+  border-top: none;
+  background-color: #595959;
+}
+
 
 aside {
   width: 10vw;
@@ -71,16 +128,34 @@ aside {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #a5a5a5;
+  background-color: #595959;
 }
 
-.sign-in-btn {
+.sign-in-container {
   width: 90%;
-  height: 25%;
+  height: 15%;
   margin: 3vh 0vw 0vh 0vw;
+  border: solid grey 2px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+.log-in {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in-inputs {
+  width: 80%;
+  height: 40%;
+  z-index: 9;
+  position: relative;
 }
 
 .hidden {

@@ -6,14 +6,10 @@ export class ApiData {
     this.rooms = null;
   }
 
-  getCustomerData() {
+  getCustomersData() {
     return fetch('http://localhost:3001/api/v1/customers')
     .then( response => {
-      if (response.ok) {
         return response.json()
-      } else {
-        return 'error'
-      }
     })
     .then( customers =>
       this.customers = customers.customers
@@ -23,11 +19,7 @@ export class ApiData {
   getBookingData() {
     return fetch('http://localhost:3001/api/v1/bookings')
     .then( response => {
-      if (response.ok) {
         return response.json()
-      } else {
-        return 'error'
-      }
     })
     .then( bookings =>
       this.bookings = bookings.bookings
@@ -37,14 +29,58 @@ export class ApiData {
   getRoomsData() {
     return fetch('http://localhost:3001/api/v1/rooms')
     .then( response => {
-      if (response.ok) {
         return response.json()
-      } else {
-        return 'error'
-      }
     })
     .then( rooms =>
       this.rooms = rooms.rooms
     );
+  }
+
+  postBooking(userID, date, roomNumber) {
+    return fetch('http://localhost:3001/api/v1/bookings',{
+      method: 'POST',
+      body: JSON.stringify({
+        userID: userID,
+        date: date,
+        roomNumber: roomNumber
+      }),
+      headers: {"Content-Type": "application/json"},
+    })
+    .then( response => {
+        return response.json()
+    })
+    .then( resp => {
+      this.bookings.push(resp.newBooking)
+      console.log(resp)
+    });
+  }
+
+  getUsernames() {
+    this.customers = this.customers.map(customer => {
+      return {
+        id: customer.id,
+        name: customer.name,
+        username: `customer${customer.id}`
+      }
+    })
+  }
+
+  getCompleteBookingInfo() {
+    this.bookings = this.bookings.map(booking => {
+      const matchingRoom = this.rooms.find(room => {
+        return booking.roomNumber === room.number
+      })
+      return {
+        id: booking.id,
+        userID: booking.userID,
+        date: booking.date,
+        roomNumber: booking.roomNumber,
+        roomServiceCharges: [],
+        roomType: matchingRoom.roomType,
+        bedSize: matchingRoom.bedSize,
+        numBeds: matchingRoom.numBeds,
+        costPerNight: matchingRoom.costPerNight
+      }
+    })
   }
 }
