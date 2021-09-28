@@ -156,6 +156,10 @@ export let domUpdates = {
 
   },
 
+  goHome() {
+    this.hide(document.getElementById('js-vacant-room-info'))
+  },
+
   hide(...elements) {
     elements.forEach(elm => elm.classList.add('hidden'))
   },

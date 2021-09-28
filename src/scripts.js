@@ -33,11 +33,6 @@ goBackBtn.addEventListener('click', goBackToResults)
 makeBookingBtn.addEventListener('click', bookRoom)
 
 function loadApiData() {
-  // if(localStorage.user) {
-  //   user = new User(JSON.parse(localStorage.getItem('user')));
-  //   retrievePreviousBookings()
-  //   domUpdates.displayUserInfo(user)
-  // }
   apiData = new ApiData();
   apiData.getCustomersData();
   apiData.getBookingData();
@@ -141,4 +136,5 @@ function goBackToResults() {
 function bookRoom() {
   const roomNumber = document.getElementById('js-room-info-heading').innerText.substring(5)
   apiData.postBooking(user.id, user.selectedDate, parseInt(roomNumber))
+  domUpdates.goHome()
 }
